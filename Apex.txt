@@ -1,0 +1,273 @@
+
+/*
+CtoF cf=new CtoF(25);
+cf.Calculate();
+*/
+public class CtoF 
+{
+    public Decimal t_c;
+    public Decimal t_f;
+    
+    public CtoF(Decimal t_c)
+    {
+        this.t_c=t_c;
+    }
+    
+    public void Calculate()
+    {
+        t_f=(t_c*(9.0/5.0))+32;
+        System.debug('Temperature in Degree Fahrenheit : '+t_f);
+    }  
+}
+
+__________________________________________________________________________________________________
+
+
+/*
+Marksheet m=new Marksheet('Aryan Galande','31324',85,76,92,45);
+m.Calculate();
+m.Display();
+*/
+public class Marksheet 
+{
+	public String name;
+    public String rollno;
+    public Decimal dsbda_marks;
+    public Decimal ai_marks;
+    public Decimal wt_marks;
+    public Decimal cc_marks;
+    public Decimal average;
+    public String grade;
+    
+    public Marksheet( String name,String rollno,Decimal dsbda_marks,Decimal ai_marks,Decimal wt_marks,Decimal cc_marks)
+    {
+        this.name=name;
+        this.rollno=rollno;
+        this.dsbda_marks=dsbda_marks;
+        this.ai_marks=ai_marks;
+        this.wt_marks=wt_marks;
+        this.cc_marks=cc_marks;   
+    }
+    
+    public void Calculate()
+    {
+        average=(dsbda_marks+ai_marks+wt_marks+cc_marks)/4;
+        
+        if(average>=90)
+        {
+            grade='O+';
+        }
+        else if(average>=80)
+        {
+            grade='O';
+        }
+        else if(average>=70)
+        {
+            grade='A+';
+        }
+        else if(average>=60)
+        {
+            grade='A';
+        }
+        else if(average>=50)
+        {
+            grade='B+';
+        }
+        else if(average>=40)
+        {
+            grade='B';
+        }
+        else 
+        {
+            grade='Fail';
+        } 
+    }
+    public void Display()
+    {
+        System.debug('Name : '+name);
+        System.debug('Roll Number : '+rollno);
+        System.debug('Average Marks : '+average);
+        System.debug('Grade : '+grade);
+    }
+}
+
+________________________________________________________________________________________
+
+/*
+Calculator c=new Calculator(23,14,'+');
+c.Calculate();
+System.debug('Result = '+c.result);
+*/
+
+public class Calculator 
+{  
+    public Decimal num1; 
+    public Decimal num2 ;
+    public String operator; 
+    public Decimal result ;
+    
+    public Calculator(Decimal num1, Decimal num2, String operator) 
+    {
+        this.num1 = num1;
+        this.num2 = num2;
+        this.operator = operator;
+    }
+    
+    public void Calculate()
+    {       
+            if(operator == '+')
+            {
+                result=num1+num2;
+            }
+            else if(operator == '-')
+            {
+                result=num1-num2;
+            }
+            else if(operator == '*')
+            {
+                result=num1*num2;
+            }
+            else if(operator == '/')
+            {
+                if(num2!=0)
+                {
+                    result=num1/num2;
+                }
+                else
+                {
+                    System.debug('Cannot Divide by Zero !!');
+                }
+            }
+            else if(operator == 'sqrt')
+            {
+                if(num1>=0)
+                {
+                    result=Math.sqrt(num1);
+                }
+                else
+                {
+                    System.debug('Square Root of Negative Number is not possible !!');
+                }
+            }
+            else if(operator == 'cbrt')
+            {
+                result=Math.cbrt(num1);
+            }
+            else if(operator == 'square')
+            {
+                result=num1*num1;
+            } 
+    }    
+}
+
+__________________________________________________________________________________________________________________________________________
+
+/*
+GreatestNumber3 g=new GreatestNumber3(2,4,5);
+g.Calculate();
+*/
+public class GreatestNumber3 
+{
+    public Decimal num1;
+    public Decimal num2;
+    public Decimal num3;
+    public Decimal greatest;
+
+    public GreatestNumber3(Decimal num1,Decimal num2,Decimal num3)
+    {
+        this.num1=num1;
+        this.num2=num2;
+        this.num3=num3;
+    }
+    
+    public void Calculate()
+    {
+        if(num1>=num2 && num1>=num3)
+        {
+            greatest=num1;
+        }
+        else if(num2>=num1 && num2>=num3)
+        {
+            greatest=num2;  
+        }
+        else if(num3>=num1 && num3>=num2)
+        {
+            greatest=num3;  
+        }
+        System.debug('Greatest Number of all three numbers : '+greatest);
+    }
+}
+
+
+__________________________________________________________________________________________________________________________________
+
+/*
+ElectricityBill e=new ElectricityBill(301);
+e.Calculate();
+*/
+public class ElectricityBill 
+{
+    public Integer units;
+    public Decimal cost;
+    
+    public ElectricityBill(Integer units)
+    {
+        this.units=units;
+    }
+    
+    public void Calculate()
+    {
+        if(units<=100)
+        {
+            cost=units*5;
+        }
+        else if(units<=200)
+        {
+            cost=100*5+(units-100)*7.5;
+        }
+        else if(units<=300)
+        {
+            cost=100*5+100*7.5+(units-200)*10;
+        }
+        else if(units>300)
+        {
+            cost=100*5+100*7.5+100*10+(units-300)*15;
+        }
+        System.debug('Total Electicity Bill Cost : '+cost);
+    }
+
+}
+
+_______________________________________________________________________________________________________
+
+/*
+CurrencyConverter c= new CurrencyConverter();
+c.Converter(25000,c.CURR_INR,c.CURR_JPY);
+*/
+public class CurrencyConverter 
+{
+    public Decimal CURR_INR;
+    public Decimal CURR_USD;
+    public Decimal CURR_EUR;
+    public Decimal CURR_GBP;
+    public Decimal CURR_JPY;
+    public Decimal amount;
+    public Decimal convertedAmount;
+    
+    public CurrencyConverter()
+    {
+      CURR_INR=83;
+      CURR_USD=1.0;
+      CURR_EUR=0.93;
+      CURR_GBP=0.79;
+      CURR_JPY=153;
+        
+    }
+ 
+    public void Converter(Decimal amount,Decimal fromCurr,Decimal toCurr)
+    {
+        convertedAmount=(amount/fromCurr)*toCurr;
+        System.debug('Converted Amount = '+convertedAmount);
+    }
+}
+
